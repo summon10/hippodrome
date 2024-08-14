@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -17,7 +19,13 @@ public void whenNullHorses() {
     @Test
 public void whenEmptyOrSpacesString() {
 
-
+        Throwable exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    new Hippodrome(new ArrayList<Horse>());
+                }
+        );
+        assertEquals("Horses cannot be null.", exception.getMessage());
     }
 
 }
